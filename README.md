@@ -1,6 +1,6 @@
 # Sketchfably
 
-TODO: Write a gem description
+Sketchfably is a set up Rails helps to easily (and safely) embed Sketchfab models into records. Users can just paste the BBCode and Sketchfably will show it!
 
 ## Installation
 
