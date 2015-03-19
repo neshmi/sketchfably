@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["matt@averails.com"]
   spec.summary       = %q{Helpers for the Sketchfab API}
   spec.description   = %q{Helpers for the Sketchfab API}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/neshmi/sketchfably"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

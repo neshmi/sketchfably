@@ -1,5 +1,6 @@
-require "sketchfably/version"
-require "sketchfably/sketchfab_model"
+require File.dirname(__FILE__) + '/sketchfably/version'
+require File.dirname(__FILE__) + '/sketchfably/sketchfab_model'
+
 require 'rest_client'
 
 module Sketchfably
