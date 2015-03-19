@@ -20,7 +20,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Find Sketchfab models by tag:
+@models = Sketchfably.get_models_by_tag("myawesometag")
+
+Display embed code:
+
+model.html
 
 ## Contributing
 

@@ -7,7 +7,7 @@ module Sketchfably
     results = RestClient.get "https://api.sketchfab.com/v2/models?tags_filter=#{tag}"
     json_results = JSON.parse results
     models = []
-    json_results["results"].map{|result| models << ::SketchfabModel.new(result["uid"],result["name"],result["user"]["username"])}
+    json_results["results"].map{|result| models << ::SketchfabModel.new(id: result["uid"], name: result["name"], username: result["user"]["username"])}
     return models
   end
 
@@ -15,7 +15,7 @@ module Sketchfably
     ## [sketchfab]55ea0aed9bfd462593f006ea8c4aade0[/sketchfab]
       #[url=https://sketchfab.com/models/55ea0aed9bfd462593f006ea8c4aade0]The Lion of Mosul[/url] by [url=https://sketchfab.com/neshmi]neshmi[/url] on [url=https://sketchfab.com]Sketchfab[/url]
     bbcode.match(/\[sketchfab\](.*)\[\/sketchfab\]\s\[url.*\](.*)\[\/url\].*\[url.*\](.*)\[\/url\].*\[url.*\](.*)\[\/url\]/)
-    model = SketchfabModel.new($1,$2,$3)
+    model = SketchfabModel.new(id: $1, name: $2, username: $3)
     return model
   end
 

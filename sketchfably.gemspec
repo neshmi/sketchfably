@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Sketchfably::VERSION
   spec.authors       = ["Matthew Vincent"]
   spec.email         = ["matt@averails.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Helpers for the Sketchfab API}
+  spec.description   = %q{Helpers for the Sketchfab API}
   spec.homepage      = ""
   spec.license       = "MIT"
 
