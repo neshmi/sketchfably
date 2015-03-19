@@ -1,12 +1,14 @@
 require File.dirname(__FILE__) + '/sketchfably/version'
 require File.dirname(__FILE__) + '/sketchfably/sketchfab_model'
 
-require 'rest_client'
+require 'net/http'
+require 'uri'
 
 module Sketchfably
   def self.get_models_by_tag(tag)
-    results = RestClient.get "https://api.sketchfab.com/v2/models?tags_filter=#{tag}"
-    json_results = JSON.parse results
+    uri = URI.parse("https://api.sketchfab.com/v2/models?tags_filter=#{tag}")
+    response = Net::HTTP.get_response(uri)
+    json_results = JSON.parse response.body
     models = []
     json_results["results"].map{|result| models << ::SketchfabModel.new(id: result["uid"], name: result["name"], username: result["user"]["username"])}
     return models
