@@ -23,13 +23,21 @@ describe Sketchfably do
     def html_template
       File.read(File.join(File.dirname(__FILE__),"fixtures","embed_code"))
     end
+
+    def resized_html_template
+      File.read(File.join(File.dirname(__FILE__),"fixtures","resized_embed_code"))
+    end
     
     it "should render html for a model" do
-      expect(Sketchfably.get_html_for_model model).to eq(html_template)
+      expect(Sketchfably.get_html_for_model sketchfab_model: model).to eq(html_template)
     end
 
     it "a model should have its own html template" do
       expect(model.html).to eq(html_template)
+    end
+
+    it "can resize the iframe" do
+      expect(model.html(height: 500, width: 600)).to eq(resized_html_template)
     end
   end
 
@@ -51,7 +59,7 @@ describe Sketchfably do
     end
 
     it "should get html template from bbcode" do
-      expect(Sketchfably.get_html_for_model Sketchfably.get_model_from_bbcode(bbcode)).to eq(html_template)
+      expect(Sketchfably.get_html_for_model sketchfab_model: Sketchfably.get_model_from_bbcode(bbcode)).to eq(html_template)
     end
   end
 end

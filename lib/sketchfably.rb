@@ -22,9 +22,9 @@ module Sketchfably
     return model
   end
 
-  def self.get_html_for_model(sketchfab_model)
+  def self.get_html_for_model(sketchfab_model:, width: 640, height: 480)
     html = <<-eol
-<iframe width="640" height="480" src="https://sketchfab.com/models/#{sketchfab_model.id}/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+<iframe width="#{width}" height="#{height}" src="https://sketchfab.com/models/#{sketchfab_model.id}/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
 <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
   <a href="https://sketchfab.com/models/#{sketchfab_model.id}?utm_source=oembed&utm_medium=embed&utm_campaign=#{sketchfab_model.id}" target="_blank" style="font-weight: bold; color: #1CAAD9;">#{sketchfab_model.name}</a>

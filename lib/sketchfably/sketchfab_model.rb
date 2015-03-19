@@ -6,7 +6,7 @@ class SketchfabModel
     @username = username
   end
 
-  def html
-    Sketchfably.get_html_for_model(self)
+  def html(height: 480, width: 640)
+    Sketchfably.get_html_for_model(sketchfab_model: self, height: height, width: width)
   end
 end
