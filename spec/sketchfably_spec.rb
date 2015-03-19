@@ -9,10 +9,10 @@ describe Sketchfably do
 
   describe "tag query models" do
     subject { Sketchfably.get_models_by_tag("projectmosul").first }
-
-    its([:id]){ should eq("55ea0aed9bfd462593f006ea8c4aade0") }
-    its([:username]){ should eq("neshmi") }
-    its([:name]){ should eq("The Lion of Mosul") }
+    its(:class){ should eq(SketchfabModel) }
+    its(:id){ should eq("55ea0aed9bfd462593f006ea8c4aade0") }
+    its(:username){ should eq("neshmi") }
+    its(:name){ should eq("The Lion of Mosul") }
   end
 
   describe "html template" do
@@ -43,7 +43,7 @@ describe Sketchfably do
     end
 
     it "should parse bbcode and abstract id, username, and model name" do
-      expect(Sketchfably.get_model_from_bbcode(bbcode)).to eq(model)
+      expect(Sketchfably.get_model_from_bbcode(bbcode).id).to eq(model.id)
     end
 
     it "should get html template from bbcode" do
