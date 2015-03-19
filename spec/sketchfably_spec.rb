@@ -27,6 +27,10 @@ describe Sketchfably do
     it "should render html for a model" do
       expect(Sketchfably.get_html_for_model model).to eq(html_template)
     end
+
+    it "a model should have its own html template" do
+      expect(model.html).to eq(html_template)
+    end
   end
 
   describe "bbcode" do
