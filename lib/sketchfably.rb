@@ -15,10 +15,10 @@ module Sketchfably
   end
 
   def self.get_model_from_bbcode(bbcode)
-    ## [sketchfab]55ea0aed9bfd462593f006ea8c4aade0[/sketchfab]
-      #[url=https://sketchfab.com/models/55ea0aed9bfd462593f006ea8c4aade0]The Lion of Mosul[/url] by [url=https://sketchfab.com/neshmi]neshmi[/url] on [url=https://sketchfab.com]Sketchfab[/url]
-    bbcode.match(/\[sketchfab\](.*)\[\/sketchfab\]\s\[url.*\](.*)\[\/url\].*\[url.*\](.*)\[\/url\].*\[url.*\](.*)\[\/url\]/)
-    model = SketchfabModel.new(id: $1, name: $2, username: $3)
+    #[sketchfab]55ea0aed9bfd462593f006ea8c4aade0[/sketchfab]
+    #[url=https://sketchfab.com/models/55ea0aed9bfd462593f006ea8c4aade0]The Lion of Mosul[/url] by [url=https://sketchfab.com/neshmi]neshmi[/url] on [url=https://sketchfab.com]Sketchfab[/url]
+    bbcode.match(/\[sketchfab\](.*)\[\/sketchfab\](\r\n|\r|\n)\[url.*\](.*)\[\/url\].*\[url.*\](.*)\[\/url\].*\[url.*\](.*)\[\/url\]/)
+    model = SketchfabModel.new(id: $1, name: $3, username: $4)
     return model
   end
 
@@ -32,5 +32,15 @@ module Sketchfably
   on <a href="https://sketchfab.com?utm_source=oembed&utm_medium=embed&utm_campaign=#{sketchfab_model.id}" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
 </p>
     eol
+  end
+
+  module ClassMethods
+    ## if responds to :bbcode?
+    def bbcode_to_html(width: 640, height: 480)
+      model = Sketchfably.get_model_from_bbcode(self.bbcode)
+      html = Sketchfably.get_html_for_model(sketchfab_model: model, width: width, height: height)
+      return html
+    end
+
   end
 end
